@@ -1,0 +1,14 @@
+.container {
+ margin: auto;
+ width: 500px;
+ text-align : center;
+ background-color: mediumpurple;
+}
+
+#maoriQuote {
+  padding: 20px;
+}
+
+#englishQuote {
+  padding: 20px;
+}
