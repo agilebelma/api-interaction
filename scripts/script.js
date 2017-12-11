@@ -19,5 +19,3 @@ function loadQuotes() {
   maoriQuote.innerHTML = "Tuhinga!";
   englishQuote.innerHTML = "Success!";
 }
-
-
