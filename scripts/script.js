@@ -4,18 +4,31 @@ document.addEventListener('DOMContentLoaded', startQuote);
 
 function startQuote() {
 
-  console.log("startQuote is called");
+  //console.log("startQuote is called");
   document.getElementById('buttonNewQuote').addEventListener("click", loadQuotes);
-  //document.getElementById('buttonNewQuote').onclick = loadQuotes;
 
+  loadQuotes();
 }
 
 function loadQuotes() {
 
-  console.log("loadQuotes is called");
+  //console.log("loadQuotes is called");
   var maoriQuote = document.getElementById('maoriQuote');
   var englishQuote = document.getElementById('englishQuote');
 
-  maoriQuote.innerHTML = "Tuhinga!";
-  englishQuote.innerHTML = "Success!";
+  var connection = new XMLHttpRequest();
+  connection.addEventListener("load", updateDisplay);
+  connection.open("GET", "https://eda-te-reo.herokuapp.com/api/proverbs");
+                          //https://eda-te-reo.herokuapp.com/api/proverbs
+  connection.send();
+
+}
+
+function updateDisplay() {
+
+  let json = JSON.parse(this.responseText);
+  console.log(json);
+
+  maoriQuote.innerHTML = json.source;
+  englishQuote.innerHTML = json["translation"];
 }
